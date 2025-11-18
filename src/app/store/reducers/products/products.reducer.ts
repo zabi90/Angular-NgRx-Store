@@ -10,7 +10,7 @@ export const initialState: ProductsState = []
 
 export const productsReducer = createReducer(
   initialState,
-  on(ProductsActions.productsLoad, state => ([...state, ... mockProducts])),
+  //on(ProductsActions.productsLoad, state => ([...state, ... mockProducts])),
   on(ProductsActions.productsSuccess, (state, { products }) => ([...state, ...products ])),
 );
 

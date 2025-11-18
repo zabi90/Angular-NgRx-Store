@@ -1,7 +1,7 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {ProductsActions} from '../../store/actions/products.actions';
-import {productsFeatureKey} from '../../store/reducers/products/products.reducer';
+import {productsFeatureKey, ProductsState} from '../../store/reducers/products/products.reducer';
 import {AsyncPipe} from '@angular/common';
 import {map} from 'rxjs/operators';
 
@@ -16,7 +16,7 @@ import {map} from 'rxjs/operators';
 export class ProductList implements OnInit {
 
   private store = inject(Store)
-  products$ = this.store.select(productsFeatureKey)
+  products$ = this.store.select<ProductsState>(state => state.products)
   ngOnInit() {
     this.store.dispatch(ProductsActions.productsLoad())
   }
